@@ -143,3 +143,27 @@ def Previous():
     # Set Next Song
 
     song_list.selection_set(previous_song)
+
+
+def Next():
+    next_song = song_list.curselection()
+
+    # Next song index
+
+    next_song = next_song[0] + 1
+
+    # Get Next song
+
+    temp2 = song_list.get(next_song)
+    temp2 = f"/home/downloads/music/{temp2}"
+
+    mixer.music.load(temp2)
+    mixer.music.play()
+    song_list.selection_clear(0, END)
+
+    # Activate New Song
+    song_list.activate(next_song)
+
+    # Set Next Song
+
+    song_list.selection_set(next_song)
