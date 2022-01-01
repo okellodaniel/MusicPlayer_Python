@@ -93,7 +93,7 @@ def deletesong():
     song_list.delete(curr_song[0])
 
 
-def play():
+def Play():
     song = songs_list.get(ACTIVE)
     song = f"/home/downloads/music/{song}"
     mixer.music.load(song)
@@ -117,3 +117,29 @@ def Resume():
 def Stop():
     mixer.music.stop()
     song_list.selection_clear(ACTIVE)
+
+# Navigate from the Current Song
+
+
+def Previous():
+    previous_song = song_list.curselection()
+
+    # Previous song index
+
+    previous_song = previous_song[0] - 1
+
+    # Get Previous song
+
+    temp2 = song_list.get(previous_song)
+    temp2 = f"/home/downloads/music/{temp2}"
+
+    mixer.music.load(temp2)
+    mixer.music.play()
+    song_list.selection_clear(0, END)
+
+    # Activate New Song
+    song_list.activate(previous_song)
+
+    # Set Next Song
+
+    song_list.selection_set(previous_song)
