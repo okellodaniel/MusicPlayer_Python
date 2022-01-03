@@ -16,10 +16,10 @@ mixer.init()
 
 # Listbox containing the songs
 
-song_list = Listbox(root, selectmode=SINGLE, bg="black", fg="white", width=50, height=20, font=("arial", 15),
-                    height=12, width=47, selectbackground="gray", selectforeground="black")
+song_list = Listbox(root, selectmode=SINGLE, bg="black", fg="white", font=(
+    "arial", 15), height=12, width=47, selectbackground="gray", selectforeground="black")
 
-song_list.grid(columnsoan=9)
+song_list.grid(columnspan=9)
 
 # Button font
 
@@ -94,7 +94,7 @@ def deletesong():
 
 
 def Play():
-    song = songs_list.get(ACTIVE)
+    song = song_list.get(ACTIVE)
     song = f"/home/downloads/music/{song}"
     mixer.music.load(song)
     mixer.music.play()
